@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../libs/three.js"></script>
+    <script src="../../libs/dat.gui.js"></script>
+    <script src="../../libs/TrackballControls.js"></script>
+    <script src="../../libs/jscolor.js"></script>
+    <script src="../../libs/stats.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script> -->
+    <script src="./index.js"></script>
+  </head>
+  <style type="text/css">
+    body {
+      /* set margin to 0 and overflow to hidden, to
+             use the complete page */
+      margin: 0;
+      overflow: hidden;
+    }
+    div#canvas-frame {
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      height: 600px;
+      background-color: #eeeeee;
+    }
+    .color-pricker {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+    }
+  </style>
+  <body>
+    <div id="canvas-frame"></div>
+    <input
+      class="color-pricker"
+      data-jscolor="{value:'#FF0000', alpha:1}"
+      onChange="colorPickerUpdate(this.jscolor, '#pr3')"
+    />
+  </body>
+</html>
