@@ -48,17 +48,16 @@ function initGUI() {
 
 // 初始化物体
 function initObject() {
-    var material = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+    var material = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.BackSide });
 
     var loader = new THREE.VTKLoader();
     console.log(loader);
     loader.setCrossOrigin("Anonymous");  // 解决跨域问题
-    // 
     // https://threejs-models.vercel.app/models/vtk/bunny.vtk
     loader.load("../../static/models/vtk/bunny.vtk", function (geometry) {
         geometry.computeVertexNormals();
         var mesh = new THREE.Mesh(geometry, material);
-        mesh.position.setY(- 0.09);
+        // mesh.position.setY(- 0.09);
         scene.add(mesh);
     });
 }

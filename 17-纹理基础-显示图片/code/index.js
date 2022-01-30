@@ -67,6 +67,7 @@ function initObject() {
     // 获取纹理,内部使用ImageLoader来实现
     var loader = new THREE.TextureLoader();
     loader.setCrossOrigin("Anonymous");  // 解决跨域问题
+    // https://threejs-models.vercel.app/textures/xiaoyuan.png
     var texture = loader.load("textures/image.png");
     // 使用纹理进行材质创建
     var material = new THREE.MeshBasicMaterial({ map: texture })
