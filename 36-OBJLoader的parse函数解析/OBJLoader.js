@@ -38,7 +38,7 @@ THREE.OBJLoader.prototype = {
 
 		var object, objects = [];
 		var geometry, material;
-
+		// 解析向量索引
 		function parseVertexIndex(value) {
 
 			var index = parseInt(value);
@@ -46,7 +46,7 @@ THREE.OBJLoader.prototype = {
 			return (index >= 0 ? index - 1 : index + vertices.length / 3) * 3;
 
 		}
-
+		// 解析法线索引
 		function parseNormalIndex(value) {
 
 			var index = parseInt(value);
@@ -54,7 +54,7 @@ THREE.OBJLoader.prototype = {
 			return (index >= 0 ? index - 1 : index + normals.length / 3) * 3;
 
 		}
-
+		// 解析uv索引
 		function parseUVIndex(value) {
 
 			var index = parseInt(value);
@@ -62,7 +62,7 @@ THREE.OBJLoader.prototype = {
 			return (index >= 0 ? index - 1 : index + uvs.length / 2) * 2;
 
 		}
-
+		// 添加向量索引
 		function addVertex(a, b, c) {
 
 			geometry.vertices.push(
@@ -72,7 +72,7 @@ THREE.OBJLoader.prototype = {
 			);
 
 		}
-
+		// 添加法线索引
 		function addNormal(a, b, c) {
 
 			geometry.normals.push(
@@ -82,7 +82,7 @@ THREE.OBJLoader.prototype = {
 			);
 
 		}
-
+		// 添加uv点索引
 		function addUV(a, b, c) {
 
 			geometry.uvs.push(
