@@ -282,7 +282,7 @@ function render() {
         }
       }
 
-      // 向上
+      // 向上运动
       if (data.direction > 0) {
         // 计算落地点到原始位置的距离
         d =Math.abs(p.x - vt[0]) + Math.abs(p.y - vt[1]) + Math.abs(p.z - vt[2]);
@@ -304,9 +304,42 @@ function render() {
         }
       }
     }
+//! 如果是向下移动完成，那么休息一会，再向上移动
+    // 如果向下的顶点数等于总顶点数，就可以向上移动了
+    if (data.down === vl) {
+      if (data.delay === 0) { // 等待时间结束
+        data.direction = 1;
+        data.speed = 60;
+        data.down = 0;
+        data.delay = 300;
 
+        for (let i = 0; i < vl; i++) {
+          vertices_tmp[i][3] = 0;
+        }
+      } else { 
+        // 等待时间每次减1
+        data.delay -= 1;
+      }
+    }
 
+    //! 如果是向上移动完成，那么休息一会，再向下移动
+    if (data.up === vl) {
+      if (data.delay === 0) {
+        data.direction = -1;
+        data.speed = 60;
+        data.up = 0;
+        data.delay = 300;
+
+        for (let i = 0; i < vl; i++) {
+          vertices_tmp[i][4] = 0;
+        }
+      } else {
+        data.delay -= 1;
+      }
+    }
+    mesh.geometry.verticesNeedUpdate = true;
   }
+  
   renderer.clear();
   renderer.render(scene, camera);
 }
